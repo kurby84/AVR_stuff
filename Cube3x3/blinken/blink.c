@@ -6,10 +6,36 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#define BLINK_WECHSEL 20
+int blinkcounter=0;
+
+
 ISR (TIMER0_OVF_vect)
 {
-  PORTD = PORTD ^ 1<<PD6; // port PD6 invertieren -> 9
-  PORTB = ~PORTB; // PORTB inventieren  -> 1-8
+	blinkcounter++;
+  if(blinkcounter<=BLINK_WECHSEL){
+  	PORTD = PORTD ^ 1<<PD6; // port PD6 invertieren -> 9
+  	PORTB = ~PORTB; // PORTB inventieren  -> 1-8
+  }
+  else if (blinkcounter<=2*BLINK_WECHSEL){
+    PORTD = PORTD ^ 1<<PD4;
+  	PORTD = PORTD ^ 1<<PD3;
+  	PORTD = PORTD ^ 1<<PD5;
+  }
+  
+  if (blinkcounter==BLINK_WECHSEL){
+  	PORTD |=  1<<PD6;
+ 	PORTB = 0xFF; //alle 9 an schalten
+	PORTD |=  1<<PD4; //mittlere Ebene ausschalten
+  }
+    if (blinkcounter==0){
+	 PORTB = 0x00; // Alle Ausgaenge Port B auf 0 schalten
+ 	 PORTD = 0x00; // Alle Ausgaenge Port D auf 0 schalten
+  }
+  
+  if (blinkcounter>=2*BLINK_WECHSEL){
+  	blinkcounter=0;
+  }
 }
 
 int main()
