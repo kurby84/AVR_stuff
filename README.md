@@ -14,3 +14,8 @@ Links
 http://mosfetkiller.de/?s=miniledcube
 http://www.instructables.com/id/LED-Cube-3x3x3-with-ATMEGA8/
 http://www.instructables.com/id/LED-Cube-4x4x4/?ALLSTEPS
+
+Syncing git-reps
+----------------
+
+https://help.github.com/articles/syncing-a-fork/
