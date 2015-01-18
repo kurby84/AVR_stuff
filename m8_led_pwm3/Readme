@@ -1,0 +1,29 @@
+Aufbau
+------
+
+Variante 1
+^^^^^^^^^^
+
+ATmega8 mit Strom versorgen, und LED an Pin 15 (PB1, OC1A)
+anschließen, plus an den AVR-Pin. LED eventuell mit Widerstand absichern (oder zwei LED nehmen).
+
+Variante 2
+^^^^^^^^^^
+
+ATmega8 mit Strom versorgen, PB1 an die Basis eines BC550C
+anschließen. Basis mit 3.3K auf Minus ziehen. Emitter an GND, und
+Collected an die LEDS auf plus.
+
+Probleme
+^^^^^^^^
+
+* manchmal ist avrdude zu schnell, dann -B 100 oder -B 500
+  benutzen (vielleicht geht noch mehr, müsste man mal testen)
+
+Links
+-----
+
+https://www.mikrocontroller.net/articles/LED-Fading
+https://www.mikrocontroller.net/articles/AVR-Tutorial:_PWM
+
+www.mikrocontroller.net/articles/Pulsweitenmodulation
